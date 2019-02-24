@@ -26,6 +26,13 @@
      :description) s/Str})
 
 
+(s/defschema FerryCompany
+  {:name              s/Str
+   :number-of-ferries Long
+   :country           (s/enum :France :Netherlands)
+   (s/optional-key
+     :description)    s/Str})
+
 (s/defschema DiceRollResult
   {:result s/Int})
 
@@ -72,6 +79,12 @@
                    :body [pizza Pizza]
                    :summary "echoes a Pizza"
                    (ok pizza)))))
+
+             (POST "/ferry-company" [number-of-ferries]
+                   :return FerryCompany
+                   :body [ferry-company FerryCompany]
+                   :summary "commissions a ferry company, if it has ferries"
+                   (ok ferry-company)))))
 
 
 ;; A -main or -dev-main function is not provided as we are using
