@@ -7,9 +7,9 @@
 (defn parse-body [body]
   (cheshire/parse-string (slurp body) true))
 
-(deftest a-test
+(deftest adder-test
 
-  (testing "Test GET request to /hello?name={a-name} returns expected response"
+  (testing "Test GET request to /api/plus?x={number}&y={number} returns expected response"
     (let [response (app (-> (mock/request :get  "/api/plus?x=1&y=2")))
           body     (parse-body (:body response))]
       (is (= (:status response) 200))
