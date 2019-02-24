@@ -54,6 +54,13 @@
                   (ok {:result (+ x y)}))
 
              (POST "/echo" []
+             ;; Added a two number calculator, lisp style, returns JSON result
+             (GET "/calculator" []
+                  :return {:result Long}
+                  :query-params [op :- String, x :- Long, y :- Long]
+                  :summary "Calculates with two numbers"
+                  (ok {:result (utilities/calculator op x y)}))
+
              ;; http://localhost:3000/api/dice-roll
              (GET "/dice-roll" []
                   :return DiceRollResult
