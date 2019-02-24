@@ -10,7 +10,8 @@
 (ns my-api.handler
   (:require [compojure.api.sweet :refer :all]
             [ring.util.http-response :refer :all]
-            [schema.core :as s]))
+            [schema.core :as s]
+            [my-api.utilities :as utilities]))
 
 
 ;; Data definition
