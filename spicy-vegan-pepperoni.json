@@ -1,0 +1,9 @@
+{
+    "name"        : "Spicy Vegan Pepperoni",
+    "size"        : "XL",
+    "origin"      : {
+        "country" : "FI",
+        "city"    : "Tampere"
+    },
+    "description" : "Healthy and delicious Vegan version of a double pepperoni pizza with some jalapenos to spice it up"
+}
