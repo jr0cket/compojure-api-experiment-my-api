@@ -48,20 +48,21 @@
     {:swagger
      {:ui   "/"
       :spec "/swagger.json"
-      :data {:info {:title       "My-api"
-                    :description "Compojure Api example"}
-             :tags [{:name "api", :description "some apis"}]}}}
+      :data {:info {:title       "Pizza and Ferries"
+                    :description "A simple API using the Compojure Api library"}
+             :tags [{:name        "Pizza and Ferries api",
+                     :description "All your favourite Pizza, perhaps no ferries though"}]}}}
 
     (context "/api" []
-             :tags ["api"]
+             :tags ["Pizza and Ferries api"]          ; Use the tag in the swagger UI
 
+             ;; /plus takes two values and returns a JSON result
              (GET "/plus" []
                   :return {:result Long}
                   :query-params [x :- Long, y :- Long]
                   :summary "adds two numbers together"
                   (ok {:result (+ x y)}))
 
-             (POST "/echo" []
              ;; Added a two number calculator, lisp style, returns JSON result
              (GET "/calculator" []
                   :return {:result Long}
@@ -75,10 +76,11 @@
                   :summary "Rolls a twenty-sided die for Dungeon's and Dragons"
                   (ok {:result (inc (rand-int 20))}))
 
+             (POST "/pizza" []
                    :return Pizza
                    :body [pizza Pizza]
-                   :summary "echoes a Pizza"
-                   (ok pizza)))))
+                   :summary "returns a Pizza, if the Pizza is one that can be made"
+                   (ok pizza))
 
              (POST "/ferry-company" [number-of-ferries]
                    :return FerryCompany
