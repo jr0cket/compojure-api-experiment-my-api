@@ -60,3 +60,41 @@
 ;; the lein-ring plugin, which injects this for us so it can
 ;; manage the reloading of our code during development.
 
+
+
+;; Test JSON data
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; for the Pizza echo api
+
+;; {
+;;  "name"        : "Spicy Vegitarian Pepperoni",
+;;  "size"        : "XL",
+;;  "origin"      : {
+;;                   "country" : "PO",
+;;                   "city"    : "Tampere"
+;;                   },
+;;  "description" : "Healthy and delicious Vegitain version of a double pepperoni pizza with some jalapenos to spice it up"
+;;  }
+
+;; Oh no, they do not do pizza in XL size...
+
+;; Response Body
+;; {
+;;  "errors" : {
+;;              "size" : "(not (#{:L :M :S} :XL))"
+;;              }
+;;  }
+
+
+;; same data but using curl on the command line
+
+;; curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{ \
+;;                        "name" : "Spicy Vegitarian Pepperoni", \
+;;                        "size" : "XL", \
+;;                        "origin" : { \
+;;                                    "country" : "PO",     \
+;;                                    "city"    : "Tampere" \
+;;                                   }, \
+;;                        "description" : "Healthy and delicious Vegitain version of a double pepperoni pizza with some jalapenos to spice it up" \
+;;                       }' 'http://localhost:3000/api/echo'
