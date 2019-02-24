@@ -24,6 +24,10 @@
    (s/optional-key
      :description) s/Str})
 
+
+(s/defschema DiceRollResult
+  {:result s/Int})
+
 ;; Application
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; The application that is loaded into our web container.
@@ -50,6 +54,12 @@
                   (ok {:result (+ x y)}))
 
              (POST "/echo" []
+             ;; http://localhost:3000/api/dice-roll
+             (GET "/dice-roll" []
+                  :return DiceRollResult
+                  :summary "Rolls a twenty-sided die for Dungeon's and Dragons"
+                  (ok {:result (inc (rand-int 20))}))
+
                    :return Pizza
                    :body [pizza Pizza]
                    :summary "echoes a Pizza"
